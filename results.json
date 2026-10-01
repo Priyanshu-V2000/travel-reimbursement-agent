@@ -1,0 +1,138 @@
+[
+  {
+    "claim_id": "CLM-001",
+    "decision": "APPROVE",
+    "approved_amount": 1110.0,
+    "deducted_amount": 0.0,
+    "missing_docs": [],
+    "policy_refs": [
+      "POL-APR-02",
+      "POL-CAT-01",
+      "POL-PD-01",
+      "POL-PD-02",
+      "POL-RCT-01"
+    ],
+    "confidence": 0.88,
+    "explanation": "All 4 items are eligible, receipts are attached and every amount is within per-diem limits. Reimbursable total $1,110.00 falls in the manager tier, so the claim is approvable.",
+    "tools_used": [
+      "retrieve_policy",
+      "check_category_eligibility",
+      "check_per_diem_limits",
+      "check_receipts",
+      "check_airfare_class",
+      "check_submission_window",
+      "detect_duplicates",
+      "check_approval_threshold",
+      "validate_decision"
+    ]
+  },
+  {
+    "claim_id": "CLM-002",
+    "decision": "REJECT",
+    "approved_amount": 0.0,
+    "deducted_amount": 380.0,
+    "missing_docs": [],
+    "policy_refs": [
+      "POL-CAT-02"
+    ],
+    "confidence": 0.88,
+    "explanation": "Every line item (spa, minibar) is an ineligible personal expense under POL-CAT-02, so nothing is reimbursable; the full $380.00 is deducted.",
+    "tools_used": [
+      "retrieve_policy",
+      "check_category_eligibility",
+      "check_per_diem_limits",
+      "check_receipts",
+      "check_submission_window",
+      "detect_duplicates",
+      "check_approval_threshold",
+      "validate_decision"
+    ]
+  },
+  {
+    "claim_id": "CLM-003",
+    "decision": "PARTIAL_APPROVE",
+    "approved_amount": 840.0,
+    "deducted_amount": 100.0,
+    "missing_docs": [],
+    "policy_refs": [
+      "POL-APR-02",
+      "POL-CAT-01",
+      "POL-PD-01",
+      "POL-PD-02",
+      "POL-RCT-01"
+    ],
+    "confidence": 0.88,
+    "explanation": "Claim is valid but exceeds policy caps: lodging $500.00 vs cap $400.00 (2 nights x $200) -> $100.00 deducted. Reimburse $840.00 and deduct $100.00.",
+    "tools_used": [
+      "retrieve_policy",
+      "check_category_eligibility",
+      "check_per_diem_limits",
+      "check_receipts",
+      "check_airfare_class",
+      "check_submission_window",
+      "detect_duplicates",
+      "check_approval_threshold",
+      "validate_decision"
+    ]
+  },
+  {
+    "claim_id": "CLM-004",
+    "decision": "MANUAL_REVIEW",
+    "approved_amount": 0.0,
+    "deducted_amount": 0.0,
+    "missing_docs": [
+      "Itemized receipt for lodging \u2013 Hotel, 3 nights ($600.00)",
+      "Pre-approval for business/first-class airfare (POL-AIR-01)",
+      "Director approval (total > $2,000, POL-APR-03)"
+    ],
+    "policy_refs": [
+      "POL-AIR-01",
+      "POL-APR-03",
+      "POL-CAT-01",
+      "POL-PD-02",
+      "POL-RCT-01",
+      "POL-RCT-02"
+    ],
+    "confidence": 0.83,
+    "explanation": "Routed to manual review: Business/first-class airfare is a policy exception; a pre-approval may exist (POL-AIR-01) | Missing required receipt(s): Itemized receipt for lodging \u2013 Hotel, 3 nights ($600.00) (POL-RCT-01/02) | Conflicting information: L2 lodging: description says 3 night(s) but trip 2026-06-16..2026-06-18 supports only 2 | Reimbursable total $2,800.00 exceeds the $2,000 agent authority; director approval required (POL-APR-03). Provisionally reimbursable if cleared: $2,800.00 (provisional deduction $200.00).",
+    "tools_used": [
+      "retrieve_policy",
+      "check_category_eligibility",
+      "check_per_diem_limits",
+      "check_receipts",
+      "check_airfare_class",
+      "check_submission_window",
+      "detect_duplicates",
+      "check_approval_threshold",
+      "validate_decision"
+    ]
+  },
+  {
+    "claim_id": "CLM-005",
+    "decision": "MANUAL_REVIEW",
+    "approved_amount": 0.0,
+    "deducted_amount": 0.0,
+    "missing_docs": [
+      "Itemized receipt for meals \u2013 Client dinner for 4 (business development) ($220.00)"
+    ],
+    "policy_refs": [
+      "POL-APR-01",
+      "POL-CAT-01",
+      "POL-PD-01",
+      "POL-RCT-01",
+      "POL-RCT-02"
+    ],
+    "confidence": 0.83,
+    "explanation": "Routed to manual review: Missing required receipt(s): Itemized receipt for meals \u2013 Client dinner for 4 (business development) ($220.00) (POL-RCT-01/02) | Ambiguity: L1 meals: group meal for 4 people \u2014 unclear whether the per-person daily cap or a client-entertainment pre-approval applies (POL-PD-01). Provisionally reimbursable if cleared: $75.00 (provisional deduction $145.00).",
+    "tools_used": [
+      "retrieve_policy",
+      "check_category_eligibility",
+      "check_per_diem_limits",
+      "check_receipts",
+      "check_submission_window",
+      "detect_duplicates",
+      "check_approval_threshold",
+      "validate_decision"
+    ]
+  }
+]
