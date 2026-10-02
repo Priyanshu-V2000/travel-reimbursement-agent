@@ -5,7 +5,7 @@
 **A policy-grounded, tool-calling GenAI agent that adjudicates employee travel claims, explains every dollar, and knows when to hand a case to a human.**
 
 ![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?style=flat-square&logo=python&logoColor=white)
-![LLM](https://img.shields.io/badge/LLM-Llama%203.3%2070B%20on%20Groq-F55036?style=flat-square)
+![LLM](https://img.shields.io/badge/LLM-GPT--OSS%20120B%20on%20Groq-F55036?style=flat-square)
 ![Contracts](https://img.shields.io/badge/Contracts-Pydantic%20v2-E92063?style=flat-square)
 ![MCP](https://img.shields.io/badge/Tools-served%20over%20MCP-1f4f8f?style=flat-square)
 ![Eval](https://img.shields.io/badge/Eval-36%2F36%20scenarios-12805c?style=flat-square)

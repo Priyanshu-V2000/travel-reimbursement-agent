@@ -6,16 +6,17 @@
     "deducted_amount": 0.0,
     "missing_docs": [],
     "policy_refs": [
+      "POL-AIR-01",
       "POL-APR-02",
       "POL-CAT-01",
       "POL-PD-01",
       "POL-PD-02",
-      "POL-RCT-01"
+      "POL-RCT-01",
+      "POL-TIME-01"
     ],
-    "confidence": 0.88,
-    "explanation": "All 4 line items are eligible, every required receipt is attached and all amounts sit within the per-diem caps. The reimbursable total of $1,110.00 falls in the manager tier, so the claim is approved in full.",
+    "confidence": 0.95,
+    "explanation": "All line items are in eligible categories and within per\u2011diem caps. Required receipts are attached, airfare is economy, and the claim was submitted within 30\u202fdays. The total reimbursable amount equals the claimed $1,110, which falls under the manager approval tier. Recommend approval.",
     "tools_used": [
-      "retrieve_policy",
       "screen_claim_content",
       "check_category_eligibility",
       "check_per_diem_limits",
@@ -34,19 +35,19 @@
     "deducted_amount": 380.0,
     "missing_docs": [],
     "policy_refs": [
-      "POL-CAT-02"
+      "POL-APR-01",
+      "POL-CAT-02",
+      "POL-TIME-01"
     ],
-    "confidence": 0.88,
-    "explanation": "Every line item (spa, minibar) is a personal expense that POL-CAT-02 never reimburses, so nothing is payable and the full $380.00 is deducted.",
+    "confidence": 0.95,
+    "explanation": "Both line items (spa package and minibar) are classified as ineligible under the travel policy (POL-CAT-02). The claim total of $380.0 consists entirely of non\u2011reimbursable expenses, resulting in a reimbursable total of $0.0. The submission is within the 30\u2011day window (POL-TIME-01) but no reimbursement is possible, so the claim must be rejected.",
     "tools_used": [
-      "retrieve_policy",
       "screen_claim_content",
       "check_category_eligibility",
-      "check_per_diem_limits",
       "check_receipts",
-      "check_submission_window",
-      "detect_duplicates",
+      "check_per_diem_limits",
       "check_approval_threshold",
+      "check_submission_window",
       "reconcile_guardrail"
     ]
   },
@@ -57,23 +58,23 @@
     "deducted_amount": 100.0,
     "missing_docs": [],
     "policy_refs": [
+      "POL-AIR-01",
       "POL-APR-02",
       "POL-CAT-01",
       "POL-PD-01",
       "POL-PD-02",
-      "POL-RCT-01"
+      "POL-RCT-01",
+      "POL-TIME-01"
     ],
-    "confidence": 0.88,
-    "explanation": "The claim is valid, but lodging of $500.00 exceeds its cap of $400.00 (2 nights \u00d7 $200). Reimburse $840.00 and deduct $100.00; every other line is compliant.",
+    "confidence": 0.95,
+    "explanation": "All line items are in an eligible category and have required receipts. The lodging expense exceeds the per\u2011diem cap of $200 per night by $100, which must be deducted; meals are within the $75 per day limit. Airfare is economy and the claim was submitted within the 30\u2011day window. The reimbursable total is $840, falling within the manager approval tier.",
     "tools_used": [
-      "retrieve_policy",
       "screen_claim_content",
       "check_category_eligibility",
       "check_per_diem_limits",
       "check_receipts",
       "check_airfare_class",
       "check_submission_window",
-      "detect_duplicates",
       "check_approval_threshold",
       "reconcile_guardrail"
     ]
@@ -94,19 +95,18 @@
       "POL-CAT-01",
       "POL-PD-02",
       "POL-RCT-01",
-      "POL-RCT-02"
+      "POL-RCT-02",
+      "POL-TIME-01"
     ],
-    "confidence": 0.83,
-    "explanation": "Held for a human reviewer because the business-class airfare ($2,400.00) is a policy exception that may have a pre-approval (POL-AIR-01), the lodging receipt ($600.00) is missing (POL-RCT-02), the lodging line conflicts with the trip dates (3 nights claimed, trip dates allow 2) and the reimbursable total of $2,800.00 is above the agent's $2,000 authority, so a director must approve (POL-APR-03). If a reviewer clears it, $2,800.00 would be payable after a provisional deduction of $200.00.",
+    "confidence": 0.9,
+    "explanation": "The claim includes business\u2011class airfare, which is an exception under POL\u2011AIR\u201101 and must be reviewed manually. The lodging expense lacks a required receipt (POL\u2011RCT\u201101) and exceeds the per\u2011diem cap with a night\u2011count conflict (POL\u2011PD\u201102). The reimbursable total places the claim in the DIRECTOR tier, beyond the agent's authority (POL\u2011APR\u201103). These issues require manual review before any reimbursement can be approved.",
     "tools_used": [
-      "retrieve_policy",
       "screen_claim_content",
       "check_category_eligibility",
-      "check_per_diem_limits",
-      "check_receipts",
       "check_airfare_class",
+      "check_receipts",
+      "check_per_diem_limits",
       "check_submission_window",
-      "detect_duplicates",
       "check_approval_threshold",
       "reconcile_guardrail"
     ]
@@ -124,18 +124,17 @@
       "POL-CAT-01",
       "POL-PD-01",
       "POL-RCT-01",
-      "POL-RCT-02"
+      "POL-RCT-02",
+      "POL-TIME-01"
     ],
-    "confidence": 0.83,
-    "explanation": "Held for a human reviewer because the meals receipt ($220.00) is missing (POL-RCT-02) and it is a group meal, so it is unclear whether the $75 per-person daily cap or a client-entertainment pre-approval applies. If a reviewer clears it, $75.00 would be payable after a provisional deduction of $145.00.",
+    "confidence": 0.9,
+    "explanation": "The meal line is an eligible category but exceeds the $75 per\u2011diem cap and lacks the required itemized receipt for an amount over $25. The description indicates a group dinner for four, creating ambiguity about client\u2011entertainment pre\u2011approval. These issues must be resolved before reimbursement can be approved.",
     "tools_used": [
-      "retrieve_policy",
       "screen_claim_content",
       "check_category_eligibility",
       "check_per_diem_limits",
       "check_receipts",
       "check_submission_window",
-      "detect_duplicates",
       "check_approval_threshold",
       "reconcile_guardrail"
     ]
